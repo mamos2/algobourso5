@@ -1,0 +1,111 @@
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="" class="simple-text">
+                    Algobourso
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="{%  url 'index' %}">
+                        <i class="material-icons">dashboard</i>
+                        <p>Accueil</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="{% url 'user' %}">
+                       <i class="material-icons">account_box</i>
+                        <p>Mon profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="performance.html">
+                        <a href="{% url 'performance' %}">
+                       <i class="material-icons">trending_up</i>
+                        <p>Performance</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="portefeuille.html">
+                        <a href="{% url 'portefeuille' %}">
+                        <i class="material-icons">attach_money</i>
+                        <p>Portefeuille virtuel</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'forum' %}">
+                        <i class="material-icons">forum</i>
+                        <p>Forum</p>
+                    </a>
+                </li>
+                <li>
+                       <a href="{% url 'strategies' %}">
+                        <i class="material-icons">multiline_chart</i>
+                        <p>Stratégie</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'actions' %}">
+                        <i class="material-icons">assessment</i>
+                        <p>Actions</p>
+                    </a>
+                </li>
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-panel"></i>
+								<p>Stats</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-bell"></i>
+                                    <p class="notification">5</p>
+									<p>Notifications</p>
+									<b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+						<li>
+                            <a href="#">
+								<i class="ti-settings"></i>
+								<p>Settings</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
