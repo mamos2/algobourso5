@@ -11,13 +11,29 @@ import sys  # To find out the script name (in argv[0])
 import backtrader as bt
 
 
+
+
 # Create a Strategy
 class TestStrategy(bt.Strategy):
 
     def log(self, txt, dt=None):
         ''' Logging function fot this strategy'''
         dt = dt or self.datas[0].datetime.date(0)
-        print('%s, %s' % (dt.isoformat(), txt))
+
+
+
+        mon_fichier = open("fichier.txt", "a")  # Argh j'ai tout écrasé !
+        donnee = str('%s, %s' % (dt, txt))
+
+
+        self.resultat.append(donnee)
+        #self.resultat = str(self.resultat)
+
+        mon_fichier.write(donnee + "\n")
+
+        mon_fichier.close()
+
+
 
     def __init__(self):
         # Keep a reference to the "close" line in the data[0] dataseries
@@ -27,6 +43,7 @@ class TestStrategy(bt.Strategy):
         self.order = None
         self.buyprice = None
         self.buycomm = None
+        self.resultat = []
 
     def notify_order(self, order):
         if order.status in [order.Submitted, order.Accepted]:
@@ -142,4 +159,4 @@ if __name__ == '__main__':
 
     # Print out the final result
     'Final Portfolio Value: %.2f' % cerebro.broker.getvalue()
-    
+
