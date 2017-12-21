@@ -26,7 +26,7 @@ class TestStrategy(bt.Strategy):
         donnee = str('%s, %s' % (dt, txt))
 
 
-        self.resultat.append(donnee)
+        #self.resultat.append(donnee)
         #self.resultat = str(self.resultat)
 
         mon_fichier.write(donnee + "\n")

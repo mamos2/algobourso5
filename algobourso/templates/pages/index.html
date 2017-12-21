@@ -4,12 +4,34 @@
        <h1>Backtest CAC40</h1>
        <h2>liste des positions</h2>
 	<p>
-	<ul>
-       {% for positions in posts %}
-            <li>{{ positions }}</li>
-        {% endfor %}
+	
+    <div class="card">
+                            <div class="header">
+                                <h4 class="title">CAC40</h4>
+                                <p class="category">liste des activitées:</p>
+                            </div>
+                            <div class="content">
+                            <ul>
+                              {% for positions in posts %}
+                                <li>{{ positions }}</li>
+                              {% endfor %}
         <!-- <li>{{ posts }}</li> -->
-    </ul>
+                              </ul>
+                            </div>
+                                <div class="footer">
+                                    <div class="chart-legend">
+                                        <i class="fa fa-circle text-info"></i> Open
+                                        <i class="fa fa-circle text-danger"></i> Click
+                                        <i class="fa fa-circle text-warning"></i> Click Second Time
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="ti-reload"></i> Updated 3 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+       
 
 	</p>
 
