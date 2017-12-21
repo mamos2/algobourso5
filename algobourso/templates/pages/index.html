@@ -11,12 +11,21 @@
                                 <p class="category">liste des activitées:</p>
                             </div>
                             <div class="content">
-                            <ul>
-                              {% for positions in posts %}
-                                <li>{{ positions }}</li>
-                              {% endfor %}
-        <!-- <li>{{ posts }}</li> -->
-                              </ul>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                   
+                                    <tbody>
+                                        
+                                          {% for positions in posts %}
+                                            <tr><td>{{ positions }}</td><tr/>
+                                          {% endfor %}
+                                         
+                                        
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            
                             </div>
                                 <div class="footer">
                                     <div class="chart-legend">
