@@ -2,4 +2,4 @@
 
 import threading,time,os
 
-os.system('python3 /home/pcapprenant15/Desktop/djma-master/data/untitled.py' )
+os.system('python3 /home/pcapprenant15/Desktop/djma-master/data/positions.py' )
