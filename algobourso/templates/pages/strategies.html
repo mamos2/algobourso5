@@ -1,6 +1,55 @@
 {% extends 'layouts/default.html' %}
 {% block body %}
-   {% block container_page %}
-       <h1>bienvenue sur la page stratégies</h1>
-  {% endblock container_page %}
+    {% block container_page %}
+        <h1>Crée vos stratégies</h1>
+        <br>
+        <ul>
+            <li>1. Choissisez votre action</li>
+
+            <div class="dropdown">
+                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+                    liste des actions
+                    <br>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#paper">Action</a></li>
+                    <li><a href="#paper">Another action</a></li>
+                    <li><a href="#paper">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#paper">Separated link</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#paper">One more separated link</a></li>
+                </ul>
+            </div>
+
+
+            <br>
+
+            <li>2.choissez vos indicateurs</li>
+            <div class="dropdown">
+                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+                    indicateurs
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#paper">Action</a></li>
+                    <li><a href="#paper">Another action</a></li>
+                    <li><a href="#paper">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#paper">Separated link</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#paper">One more separated link</a></li>
+                </ul>
+            </div>
+            <br>
+            <li>2. donnez un nom à votre stratégie </li>
+            <div class="form-group">
+
+                <input type="text" value="" placeholder="Input" class="form-control" />
+
+            </div>
+        </ul>
+
+    {% endblock container_page %}
 {% endblock %}

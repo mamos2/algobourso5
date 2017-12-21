@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 # -*- coding: utf-8; py-indent-offset:4 -*-
 ###############################################################################
 #
@@ -64,8 +64,8 @@ class St(bt.Strategy):
             txtfields.append('%.2f' % self.data0.low[0])
             txtfields.append('%.2f' % self.data0.close[0])
             txtfields.append('%.2f' % self.data0.volume[0])
-            txtfields.append('%.2f' % self.data0.openinterest[0])
-            print(','.join(txtfields))
+            #txtfields.append('%.2f' % self.data0.openinterest[0])
+            print(', '.join(txtfields))
 
         if self.position:
             if self.crossover < 0.0:
