@@ -71,7 +71,7 @@ class TestStrategy(bt.Strategy):
             self.bar_executed = len(self)
 
         elif order.status in [order.Canceled, order.Margin, order.Rejected]:
-            self.log('Order Canceled/Margin/Rejected')
+            self.log('Ordre annulé/Marge/Rejeté')
 
         self.order = None
 
@@ -101,7 +101,7 @@ class TestStrategy(bt.Strategy):
                         # previous close less than the previous close
 
                         # BUY, BUY, BUY!!! (with default parameters)
-                        self.log('BUY CREATE, %.2f' % self.dataclose[0])
+                        self.log('Ordre achat crée, %.2f' % self.dataclose[0])
 
                         # Keep track of the created order to avoid a 2nd order
                         self.order = self.buy()
@@ -111,7 +111,7 @@ class TestStrategy(bt.Strategy):
             # Already in the market ... we might sell
             if len(self) >= (self.bar_executed + 5):
                 # SELL, SELL, SELL!!! (with all possible default parameters)
-                self.log('SELL CREATE, %.2f' % self.dataclose[0])
+                self.log('Ordre de vente crée, %.2f' % self.dataclose[0])
 
                 # Keep track of the created order to avoid a 2nd order
                 self.order = self.sell()
@@ -153,13 +153,13 @@ if __name__ == '__main__':
 
     # Run over everything
     #cerebro.run()
+    print ('Starting Portfolio Value: %.2f' % cerebro.broker.getvalue())
+    print ('Final Portfolio Value: %.2f' % cerebro.broker.getvalue())
     cerebro.addstrategy(TestStrategy)
     cerebro.run()
-    #cerebro.plot()
+    cerebro.plot()
 
     # Print out the final result
     
 
-    def portfolio():
-        return 'Starting Portfolio Value: %.2f' % cerebro.broker.getvalue()
-        return 'Final Portfolio Value: %.2f' % cerebro.broker.getvalue()
+
