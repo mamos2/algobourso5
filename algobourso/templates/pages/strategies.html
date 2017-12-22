@@ -1,7 +1,10 @@
 {% extends 'layouts/default.html' %}
 {% block body %}
     {% block container_page %}
-        <h1>Créez vos stratégies</h1>
+        <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                          <h2>Créez vos stratégies</h2>
         <br>
         <ul>
             <li>1. Choissisez votre action</li>
@@ -50,6 +53,46 @@
                 <button class="btn btn-success">Executer</button>
             </div>
         </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card ">
+                           <h2>Testez notre algorhithme</h2>
+        <br>
+        <ul>
+            <li>1. Choissisez votre action</li>
+
+            <div class="dropdown">
+                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+                    liste des actions
+                    <br>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#paper">cac40</a></li>
+                    <li><a href="#paper">axa</a></li>
+                    <li><a href="#paper">bnp</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#paper">total</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#paper">vivendi</a></li>
+                </ul>
+            </div>
+
+
+            <br>
+
+
+            <div class="form-group">
+
+                <input type="text" value="" placeholder="Input" class="form-control" />
+                <button class="btn btn-success">Executer</button>
+            </div>
+        </ul>
+                        </div>
+                    </div>
+                </div>
+
 
     {% endblock container_page %}
 {% endblock %}
