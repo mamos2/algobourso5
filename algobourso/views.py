@@ -4,8 +4,9 @@ from django.http import HttpResponse
 from django.template import loader
 from data import positions
 from data import cal
+from data import nom_actions
 import threading, time, os
-
+from .models import Portefeuille 
 
 def index(request):
     # os.system("python/home/mams/Bureau/algobourso5-master/data/positions.py" )
@@ -30,9 +31,9 @@ def performance(request):
 
 def portefeuille(request):
     # template = loader.get_template('algobourso/index.html')
-
+    profit = nom_actions.calcul_profit()
     # return HttpResponse(template.render(request))
-    return render(request, 'pages/portefeuille.html')
+    return render(request, 'pages/portefeuille.html', {'profit': profit})
 
 
 def strategies(request):

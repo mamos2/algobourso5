@@ -30,7 +30,8 @@ class StrategyUser(models.Model):
 	nom = models.CharField(max_length=99)
 	url_script = models.TextField()
 	indicateurs_script = models.CharField(max_length=199, choices=INDICATORS_CHOICES)
-	user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
+	#user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 		
 	
 	def __str__(self):
@@ -44,18 +45,20 @@ class Portefeuille(models.Model):
 		('TOTAL', 'total'),
 
 	)
-	
-	nom = models.CharField(max_length=49, choices=ACTIONS_CHOICES)
+	strategy_name = models.CharField(max_length=200)
+	actions = models.CharField(max_length=49, choices=ACTIONS_CHOICES)
 	date_ajout =  models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date d'ajout")
+	date_achat = models.DateField()
 	date_vente = models.DateField()
 	prix_achat = models.FloatField()
 	prix_vente = models.FloatField()
 	prix_cloture = models.FloatField()
 	nbr_actions = models.IntegerField()
 	benef = models.FloatField()
-	user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 		
 	
 	def __str__(self):
-		return self.user.username
+		return "%s %s" % (self.strategy_name, self.user)
 		
