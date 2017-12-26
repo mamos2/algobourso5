@@ -39,12 +39,13 @@ class StrategyUser(models.Model):
 
 
 
-class Portefeuille(models.Model):
+class Portefeuille(models.Model): 
 	ACTIONS_CHOICES = (
 		('BNP', 'bnp'),
 		('TOTAL', 'total'),
 
 	)
+		
 	strategy_name = models.CharField(max_length=200)
 	actions = models.CharField(max_length=49, choices=ACTIONS_CHOICES)
 	date_ajout =  models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date d'ajout")
