@@ -64,6 +64,6 @@ class LignePortefeuille(models.Model):
 		
 	
 	def __str__(self):
-		return self.portefeuille.portefeuille_name
+		return (self.actions)
 		
 
