@@ -37,16 +37,20 @@ class StrategyUser(models.Model):
 	def __str__(self):
 		return self.user.username
 
-
-
 class Portefeuille(models.Model): 
+	portefeuille_name = models.CharField(max_length=200)	
+	def __str__(self):
+		return self.portefeuille_name
+
+
+class LignePortefeuille(models.Model): 
 	ACTIONS_CHOICES = (
 		('BNP', 'bnp'),
 		('TOTAL', 'total'),
 
 	)
-		
-	strategy_name = models.CharField(max_length=200)
+	
+	portefeuille = models.ForeignKey(Portefeuille, on_delete=models.CASCADE)
 	actions = models.CharField(max_length=49, choices=ACTIONS_CHOICES)
 	date_ajout =  models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date d'ajout")
 	date_achat = models.DateField()
@@ -55,11 +59,11 @@ class Portefeuille(models.Model):
 	prix_vente = models.FloatField()
 	prix_cloture = models.FloatField()
 	nbr_actions = models.IntegerField()
-	benef = models.FloatField()
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+	#benef = models.FloatField()
+	
 		
 	
 	def __str__(self):
-		return "%s %s" % (self.strategy_name, self.user)
+		return self.portefeuille.portefeuille_name
 		
+
