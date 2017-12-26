@@ -39,8 +39,9 @@ class StrategyUser(models.Model):
 
 class Portefeuille(models.Model): 
 	portefeuille_name = models.CharField(max_length=200)	
+	user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
 	def __str__(self):
-		return self.portefeuille_name
+		return (self.user.username , self.portefeuille_name)
 
 
 class LignePortefeuille(models.Model): 
