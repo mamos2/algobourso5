@@ -20,28 +20,46 @@ class User_profil (models.Model):
 
 
 class StrategyUser(models.Model):
-	INDICATORS_CHOICES = (
-		('RSI', 'rsi'),
-		('/data/indicators/macd.py', 'macd'),
-
-	)
+	
 	date_debut = models.DateField()
 	date_fin = models.DateField()
-	nom = models.CharField(max_length=99)
-	url_script = models.TextField()
-	indicateurs_script = models.CharField(max_length=199, choices=INDICATORS_CHOICES)
+	stratname = models.CharField(max_length=99)
+	setcash = models.IntegerField()
 	#user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
 	user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-		
+	
 	
 	def __str__(self):
-		return self.user.username
+		return self.stratname
+
+class Indicateurs(models.Model):
+	
+	signal_dachat = models.BooleanField()
+	signal_vente = models.BooleanField()
+	signal_vad = models.BooleanField()
+	signal_rachat = models.BooleanField()
+
+	strategyuser = models.ManyToManyField(StrategyUser)	
+	
+	"""def __str__(self):
+								return self.strategyuser.id"""
+
+class sma(models.Model):
+	params = models.IntegerField()
+
+	indicateurs = models.ForeignKey(Indicateurs, blank=True, null=True, on_delete=models.CASCADE)
+	#user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+	#strategyUser = models.ManyToManyField(StrategyUser)	
+
+	def __int__(self):
+		return self.indicateurs.strategyuser.nom
+
 
 class Portefeuille(models.Model): 
 	portefeuille_name = models.CharField(max_length=200)	
 	user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
 	def __str__(self):
-		return (self.user.username , self.portefeuille_name)
+		return (self.portefeuille_name )
 
 
 class LignePortefeuille(models.Model): 
