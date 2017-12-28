@@ -41,19 +41,19 @@ class Indicateurs(models.Model):
 
 	strategyuser = models.ManyToManyField(StrategyUser)	
 	
-	"""def __str__(self):
-								return self.strategyuser.id"""
+	def __int__(self):
+		return self.indicateurs.strategyuser.stratname
 
 class sma(models.Model):
 	params = models.IntegerField()
-
+	close_over_sma = models.NullBooleanField( )
+	close_less_sma = models.NullBooleanField( )
 	indicateurs = models.ForeignKey(Indicateurs, blank=True, null=True, on_delete=models.CASCADE)
 	#user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 	#strategyUser = models.ManyToManyField(StrategyUser)	
 
 	def __int__(self):
-		return self.indicateurs.strategyuser.nom
-
+		return self.indicateurs.strategyuser.stratname
 
 class Portefeuille(models.Model): 
 	portefeuille_name = models.CharField(max_length=200)	
