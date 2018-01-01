@@ -35,7 +35,7 @@ def portefeuille(request):
     profit = nom_actions.calcul_profit()
     datachat = LignePortefeuille.objects.all()
     # return HttpResponse(template.render(request))
-    return render(request, 'pages/portefeuille.html', {'profit': profit} , {'datachat' : datachat})
+    return render(request, 'pages/portefeuille.html', {'profit': profit} )
 
 
 def strategies(request):

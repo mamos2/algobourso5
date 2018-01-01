@@ -18,42 +18,65 @@ class User_profil (models.Model):
 	def __str__(self):
 		return self.user.username
 
+"""class ActionData(models.Model):
+	ACTIONS_CHOICES = (
+		('/data/apple.csv', 'apple'),
+		('TOTAL', 'total'),
+
+	)
+	
+
+	actions = models.CharField(max_length=49, choices=ACTIONS_CHOICES)
+	
+	
+
+	def __str__(self):
+		return (self.actions)"""
+
+class sma(models.Model):
+
+	params = models.IntegerField()
+	close_over_sma = models.NullBooleanField( default=0)
+	close_less_sma = models.NullBooleanField( default=0)
+	#user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+	#strategyUser = models.ManyToManyField(StrategyUser)	
+	def __int__(self):
+		return self.params
 
 class StrategyUser(models.Model):
+	ACTIONS_CHOICES = (
+		('/data/apple.csv', 'apple'),
+		('TOTAL', 'total'),
+
+	)
 	
 	date_debut = models.DateField()
 	date_fin = models.DateField()
-	stratname = models.CharField(max_length=99)
+	strategy_name = models.CharField(max_length=99)
+
+	
+
+	actions = models.CharField(max_length=49, blank=True, null=True, choices=ACTIONS_CHOICES)
+	signal_dachat = models.BooleanField(default=1)
+	signal_vente = models.BooleanField(default=0)
+	signal_vad = models.BooleanField(default=0)
+	signal_rachat = models.BooleanField(default=0)
 	setcash = models.IntegerField()
 	#user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
 	user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+	#actions = models.ManyToManyField(ActionData)
+	sma = models.ForeignKey(sma, blank=True, null=True, on_delete=models.CASCADE)
+
+
 	
 	
 	def __str__(self):
-		return self.stratname
+		return self.strategy_name
 
-class Indicateurs(models.Model):
-	
-	signal_dachat = models.BooleanField()
-	signal_vente = models.BooleanField()
-	signal_vad = models.BooleanField()
-	signal_rachat = models.BooleanField()
 
-	strategyuser = models.ManyToManyField(StrategyUser)	
-	
-	def __int__(self):
-		return self.indicateurs.strategyuser.stratname
 
-class sma(models.Model):
-	params = models.IntegerField()
-	close_over_sma = models.NullBooleanField( )
-	close_less_sma = models.NullBooleanField( )
-	indicateurs = models.ForeignKey(Indicateurs, blank=True, null=True, on_delete=models.CASCADE)
-	#user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-	#strategyUser = models.ManyToManyField(StrategyUser)	
 
-	def __int__(self):
-		return self.indicateurs.strategyuser.stratname
+
 
 class Portefeuille(models.Model): 
 	portefeuille_name = models.CharField(max_length=200)	
@@ -63,14 +86,9 @@ class Portefeuille(models.Model):
 
 
 class LignePortefeuille(models.Model): 
-	ACTIONS_CHOICES = (
-		('BNP', 'bnp'),
-		('TOTAL', 'total'),
-
-	)
+	
 	
 	portefeuille = models.ForeignKey(Portefeuille, on_delete=models.CASCADE)
-	actions = models.CharField(max_length=49, choices=ACTIONS_CHOICES)
 	date_ajout =  models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date d'ajout")
 	date_achat = models.DateField()
 	date_vente = models.DateField()
@@ -83,6 +101,6 @@ class LignePortefeuille(models.Model):
 		
 	
 	def __str__(self):
-		return (self.actions)
+		return (self.nbr_actions)
 		
 
